@@ -1,0 +1,8 @@
+[
+  {
+    "name": "minecraft:iron_axe",
+    "attribute": "immortal:level",
+    "type": "item",
+    "level": 2
+  }
+]

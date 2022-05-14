@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "cn.evolvefield.mods.immortal.init.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "immortal.refmap.json",
+  "mixins": [
+    "AccessorRangedAttribute"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
