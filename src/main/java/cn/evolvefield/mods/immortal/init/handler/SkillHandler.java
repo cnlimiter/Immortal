@@ -25,7 +25,7 @@ public class SkillHandler {
     /**
      * 添加经验事件
      *
-     * @param event
+     * @param event 事件
      */
     @SubscribeEvent
     public static void onExperienceProcessed(final PlayerXpEvent.XpChange event) {
@@ -56,12 +56,11 @@ public class SkillHandler {
     /**
      * 治疗事件
      *
-     * @param event
+     * @param event 事件
      */
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onHeal(final net.minecraftforge.event.entity.living.LivingHealEvent event) {
-        if (event.getEntityLiving() instanceof Player) {
-            Player player = (Player) event.getEntityLiving();
+        if (event.getEntityLiving() instanceof Player player) {
 
             if (player.level.isClientSide) return;
 
@@ -74,7 +73,7 @@ public class SkillHandler {
     /**
      * 近程暴击事件（概率事件）
      *
-     * @param event
+     * @param event 事件
      */
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onCrit(final CriticalHitEvent event) {
@@ -97,7 +96,7 @@ public class SkillHandler {
     /**
      * 生物受伤害事件
      *
-     * @param event
+     * @param event 事件
      */
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onLivingHurt(final net.minecraftforge.event.entity.living.LivingHurtEvent event) {
@@ -158,7 +157,7 @@ public class SkillHandler {
     /**
      * 远程暴击伤害事件
      *
-     * @param event
+     * @param event 事件
      */
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onProjectileImpact(final net.minecraftforge.event.entity.ProjectileImpactEvent event) {

@@ -37,7 +37,6 @@ public class ClientProxy implements IProxy {
     public void onClientSetUpEvent(FMLClientSetupEvent event) {
         //ModMenus.onClientSetup();
         //ModEntities.onClientSetup();
-        OverlayRegistry.enableOverlay(ForgeIngameGui.EXPERIENCE_BAR_ELEMENT, false);
         ClientRegistry.registerKeyBinding(openKey);
     }
 

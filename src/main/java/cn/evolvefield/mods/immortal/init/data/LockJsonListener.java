@@ -2,7 +2,7 @@ package cn.evolvefield.mods.immortal.init.data;
 
 import cn.evolvefield.mods.immortal.Static;
 import cn.evolvefield.mods.immortal.api.core.lock.Requirement;
-import cn.evolvefield.mods.immortal.util.JsonUtil;
+import cn.evolvefield.mods.atomlib.utils.JsonUtils;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
@@ -26,7 +26,7 @@ public class LockJsonListener {
     public static void init() {
         dataPath = Static.CONFIG_FOLDER.resolve("locks.json");
         if (dataPath.toFile().isFile()) {
-            JsonElement element = JsonUtil.read(dataPath.toFile(), true);
+            JsonElement element = JsonUtils.read(dataPath.toFile(), true);
             if(element.isJsonArray()){
                 element.getAsJsonArray().forEach(jsonElement -> {
                     Requirement requirement;

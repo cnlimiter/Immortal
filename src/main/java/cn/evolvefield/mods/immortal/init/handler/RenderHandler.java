@@ -13,6 +13,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.gui.ForgeIngameGui;
+import net.minecraftforge.client.gui.OverlayRegistry;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -25,6 +26,12 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public class RenderHandler {
 
+    public static void initOverLay(){
+        OverlayRegistry.registerOverlayTop("", (gui, poseStack, partialTick, width, height) -> {
+            gui.setupOverlayRenderState(true, false);
+            //(new PlayerHp()).renderAll(gui);
+        });
+    }
 
     @SubscribeEvent
     public static void onGameOverlayRenderPre(RenderGameOverlayEvent.PreLayer event) {
@@ -41,33 +48,6 @@ public class RenderHandler {
             }
         }
 
-
-//        OverlayRegistry.OverlayEntry overlayEntry = OverlayRegistry.getEntry(event.getOverlay());
-//        if (overlayEntry != null) {
-//            Minecraft mc = Minecraft.getInstance();
-//            if (!mc.options.hideGui && mc.getCameraEntity() instanceof Player) {
-//                if (mc.gameMode != null && mc.gameMode.canHurtPlayer()) {
-//                    event.setCanceled(true);
-//                    String displayName = overlayEntry.getDisplayName();
-//                    int nameId = switch (displayName) {
-//                        case "Player Health" -> 0;
-//                        case "Armor Level" -> 1;
-//                        default -> -1;
-//                    };
-//
-//                    switch(nameId) {
-//                        case 0:
-//                            (new PlayerHp()).renderAll((Player)mc.getCameraEntity(), event.getMatrixStack());
-//                            break;
-//                        case 1:
-//                            break;
-//                        default:
-//                            event.setCanceled(false);
-//                    }
-//
-//                }
-//            }
-//        }
     }
 
 

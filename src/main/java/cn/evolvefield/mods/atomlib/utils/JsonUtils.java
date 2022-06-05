@@ -1,9 +1,14 @@
-package cn.evolvefield.mods.immortal.util;
+package cn.evolvefield.mods.atomlib.utils;
 
+import cn.evolvefield.mods.immortal.Static;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
+import javax.annotation.Nullable;
+import java.io.File;
+import java.io.FileReader;
 import java.util.Date;
 
 /**
@@ -73,6 +78,40 @@ public class JsonUtils {
             }
         } else {
             return new JsonArray();
+        }
+    }
+
+
+    /**
+     * @param file      the file to be parsed into json
+     * @param print_err notify in logs about errors while parsing or file missing
+     * @return JsonElement from given file, or null
+     */
+    public static JsonElement read(File file, boolean print_err) {
+        return read(file, print_err, null);
+    }
+
+    /**
+     * @param file      the file to be parsed into json
+     * @param print_err notify in logs about errors while parsing or file missing
+     * @param def       default element to return in case there are errors while parsing
+     * @return JsonElement from the given file, can be null
+     */
+    public static JsonElement read(File file, boolean print_err, @Nullable JsonElement def) {
+        try {
+            if (!file.getParentFile().exists()) {
+                file.getParentFile().mkdirs();
+            }
+            FileReader fr = new FileReader(file);
+            JsonElement obj = JsonParser.parseReader(fr);
+            fr.close();
+            return obj;
+        } catch (Exception e) {
+            if (print_err) {
+                e.printStackTrace();
+            }
+            Static.LOGGER.info("File '" + file + "' seems to be missing, or has invalid format.");
+            return def;
         }
     }
 }

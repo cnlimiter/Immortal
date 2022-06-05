@@ -5,7 +5,7 @@ import cn.evolvefield.mods.immortal.init.data.LockJsonListener;
 import cn.evolvefield.mods.immortal.init.proxy.ClientProxy;
 import cn.evolvefield.mods.immortal.init.proxy.IProxy;
 import cn.evolvefield.mods.immortal.init.proxy.ServerProxy;
-import cn.evolvefield.mods.immortal.util.FileUtil;
+import cn.evolvefield.mods.atomlib.utils.FileUtil;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartedEvent;
 import net.minecraftforge.eventbus.api.IEventBus;

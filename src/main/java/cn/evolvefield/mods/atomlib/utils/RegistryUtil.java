@@ -1,12 +1,13 @@
-package cn.evolvefield.mods.immortal.util;
+package cn.evolvefield.mods.atomlib.utils;
 
-import cn.evolvefield.mods.immortal.init.ModTab;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
@@ -30,8 +31,12 @@ public class RegistryUtil {
         return (BlockEntityType<T>) BlockEntityType.Builder.of(factory, block).build(null).setRegistryName(registryName);
     }
 
-    public static Item blockItem(Block block) {
-        return blockItem(block, new Item.Properties().tab(ModTab.TAB));
+    public static Item blockItem(Block block, Rarity rarity, CreativeModeTab tab) {
+        return blockItem(block, new Item.Properties().rarity(rarity).tab(tab));
+    }
+
+    public static Item blockItem(Block block, CreativeModeTab tab) {
+        return blockItem(block, new Item.Properties().tab(tab));
     }
 
     private static Item blockItem(Block block, Item.Properties properties) {

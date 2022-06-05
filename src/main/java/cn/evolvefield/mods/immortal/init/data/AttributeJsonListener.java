@@ -4,7 +4,7 @@ import cn.evolvefield.mods.immortal.Static;
 import cn.evolvefield.mods.immortal.api.core.attribute.IPlayerAttribute;
 import cn.evolvefield.mods.immortal.api.core.attribute.PlayerAttributes;
 import cn.evolvefield.mods.immortal.api.util.Limit;
-import cn.evolvefield.mods.immortal.util.JsonUtils;
+import cn.evolvefield.mods.atomlib.utils.JsonUtils;
 import com.google.gson.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;

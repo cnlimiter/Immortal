@@ -1,4 +1,4 @@
-package cn.evolvefield.mods.immortal.util;
+package cn.evolvefield.mods.atomlib.utils;
 
 
 import cn.evolvefield.mods.immortal.Static;
