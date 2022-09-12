@@ -1,4 +1,4 @@
-package cn.evolvefield.mods.immortal.api.client.hud;
+package cn.evolvefield.mods.atomlib.client.hud;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.world.entity.player.Player;

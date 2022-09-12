@@ -28,7 +28,7 @@ tasks.withType(JavaCompile) {
 }
 minecraft {
 
-    mappings channel: 'parchment', version: '2022.05.02-1.18.2'
+    mappings channel: 'parchment', version: '2022.09.04-1.18.2'
 
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 

@@ -1,4 +1,4 @@
-package cn.evolvefield.mods.immortal.api.client.hud;
+package cn.evolvefield.mods.atomlib.client.hud;
 
 import cn.evolvefield.mods.immortal.Static;
 import com.mojang.blaze3d.vertex.PoseStack;

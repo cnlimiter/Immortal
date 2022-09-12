@@ -57,9 +57,7 @@ public class PlayerAttribute implements IPlayerAttribute {
     public boolean equals(Object par0) {
         if (par0 == null) return false;
         if (par0 == this) return true;
-        if (!(par0 instanceof IPlayerAttribute)) return false;
-
-        IPlayerAttribute var0 = (IPlayerAttribute) par0;
+        if (!(par0 instanceof IPlayerAttribute var0)) return false;
 
         return toString().equals(var0.toString());
     }

@@ -45,7 +45,7 @@ public class AttributeJsonListener extends SimpleJsonResourceReloadListener {
         double max = JsonUtils.getDoubleOr("max", json, Double.MAX_VALUE);
 
 
-        return PlayerAttributes.registerAttribute(new ResourceLocation(Static.MOD_ID, id.getPath()), UUID.randomUUID(), Limit.none(), IPlayerAttribute.Type.ALL,
+        return PlayerAttributes.registerEntityAttribute(new ResourceLocation(Static.MOD_ID, id.getPath()), UUID.randomUUID(), Limit.none(), IPlayerAttribute.Type.ALL,
                 () -> new RangedAttribute(PlayerAttributes.newRegistryName(id.getPath()), defaultValue, min, max));
 
     }

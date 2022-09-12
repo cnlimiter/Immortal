@@ -1,7 +1,7 @@
 package cn.evolvefield.mods.immortal.client.hud.bar;
 
 import cn.evolvefield.mods.immortal.api.ImmortalApi;
-import cn.evolvefield.mods.immortal.api.client.hud.AbstractBarOverlay;
+import cn.evolvefield.mods.atomlib.client.hud.AbstractBarOverlay;
 import cn.evolvefield.mods.immortal.api.core.attribute.PlayerAttributes;
 import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.systems.RenderSystem;

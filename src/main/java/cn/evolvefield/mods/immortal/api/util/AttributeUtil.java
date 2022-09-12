@@ -13,18 +13,18 @@ import net.minecraft.world.entity.player.Player;
  */
 public class AttributeUtil {
     /**
-     * Adds par0 and par1 together with diminishing returns as they approach par2.
+     * Adds currentValue and value together with diminishing returns as they approach limit.
      *
-     * @param par0 double Current Value (Input 1).
-     * @param par1 double Adding/Subtracting Value (Input 2).
-     * @param par2 double Limit.
+     * @param currentValue double Current Value (Input 1).
+     * @param value double Adding/Subtracting Value (Input 2).
+     * @param limit double Limit.
      * @return double Diminishing returns output.
      */
-    public static double dim(final double par0, final double par1, final double par2) {
-        if (par2 <= 0D) return 0D;
-        if (par0 >= 0D && par1 >= 0D) return par2 * (1.0D - ((1.0D - (par0 / par2)) * (1.0D - (par1 / par2))));
-        if (par0 >= 0D && par1 <= 0D) return par2 * (1.0D - ((1.0D - (par0 / par2)) / (1.0D - ((-par1) / par2))));
-        if (par0 <= 0D && par1 >= 0D) return par2 * (1.0D - ((1.0D - (par1 / par2)) / (1.0D - ((-par0) / par2))));
+    public static double dim(final double currentValue, final double value, final double limit) {
+        if (limit <= 0D) return 0D;
+        if (currentValue >= 0D && value >= 0D) return limit * (1.0D - ((1.0D - (currentValue / limit)) * (1.0D - (value / limit))));
+        if (currentValue >= 0D && value <= 0D) return limit * (1.0D - ((1.0D - (currentValue / limit)) / (1.0D - ((-value) / limit))));
+        if (currentValue <= 0D && value >= 0D) return limit * (1.0D - ((1.0D - (value / limit)) / (1.0D - ((-currentValue) / limit))));
 
         return 0D;
     }
@@ -35,12 +35,12 @@ public class AttributeUtil {
      * @param playerAttributes Capability instance.
      * @param player           Player instance.
      * @param playerAttribute  IPlayerAttribute to add to.
-     * @param par3             Amount to add (can be negative to subtract).
-     * @param par4             Limit.
+     * @param value             Amount to add (can be negative to subtract).
+     * @param limit             Limit.
      */
-    public static void add(IPlayerAttributes playerAttributes, Player player, IPlayerAttribute playerAttribute, double par3, double par4) {
+    public static void add(IPlayerAttributes playerAttributes, Player player, IPlayerAttribute playerAttribute, double value, double limit) {
         double var0 = playerAttributes.get(player, playerAttribute);
-        double var1 = dim(var0, par3, par4) - var0;
+        double var1 = dim(var0, value, limit) - var0;
 
         playerAttributes.add(player, playerAttribute, var1);
     }
@@ -48,38 +48,38 @@ public class AttributeUtil {
     /**
      * Applies or removes the input attribute modifier, but uses {@link #dim(double, double, double)} for ADDITION functions. Similar to {@link #add(IPlayerAttributes, Player, IPlayerAttribute, double, double)}.
      *
-     * @param par0 {@link IPlayerAttributes#applyModifier(Player, IPlayerAttribute, AttributeModifier)} or {@link IPlayerAttributes#removeModifier(Player, IPlayerAttribute, AttributeModifier)}.
-     * @param par1 Player instance.
-     * @param par2 IPlayerAttribute.
-     * @param par3 AttributeModifier.
-     * @param par4 AttributeModifier value multiplier.
-     * @param par5 Diminishing value limit (in case of modifier ADDITION function).
+     * @param attributesTriFunction {@link IPlayerAttributes#applyModifier(Player, IPlayerAttribute, AttributeModifier)} or {@link IPlayerAttributes#removeModifier(Player, IPlayerAttribute, AttributeModifier)}.
+     * @param player Player instance.
+     * @param playerAttribute IPlayerAttribute.
+     * @param modifier AttributeModifier.
+     * @param multiplier AttributeModifier value multiplier.
+     * @param limit Diminishing value limit (in case of modifier ADDITION function).
      */
-    public static void apply(TriFunction<Player, IPlayerAttribute, AttributeModifier, IPlayerAttributes> par0, Player par1, IPlayerAttribute par2, AttributeModifier par3, double par4, double par5) {
-        double var0 = par3.getAmount() * par4;
+    public static void apply(TriFunction<Player, IPlayerAttribute, AttributeModifier, IPlayerAttributes> attributesTriFunction, Player player, IPlayerAttribute playerAttribute, AttributeModifier modifier, double multiplier, double limit) {
+        double var0 = modifier.getAmount() * multiplier;
 
-        if (par3.getOperation() == AttributeModifier.Operation.ADDITION) {
-            double var1 = par0.apply(null, null, null).get(par1, par2);
-            var0 = dim(var1, par3.getAmount() * par4, par5) - var1;
+        if (modifier.getOperation() == AttributeModifier.Operation.ADDITION) {
+            double var1 = attributesTriFunction.apply(null, null, null).get(player, playerAttribute);
+            var0 = dim(var1, modifier.getAmount() * multiplier, limit) - var1;
         }
 
-        AttributeModifier var1 = new AttributeModifier(par3.getId(), par3.getName(), var0, par3.getOperation());
+        AttributeModifier var1 = new AttributeModifier(modifier.getId(), modifier.getName(), var0, modifier.getOperation());
 
-        par0.apply(par1, par2, var1);
+        attributesTriFunction.apply(player, playerAttribute, var1);
     }
 
     /**
      * Applies or removes the input attribute modifier, but multiplies the modifier value with the input multiplier.
      *
-     * @param par0 {@link IPlayerAttributes#applyModifier(Player, IPlayerAttribute, AttributeModifier)} or {@link IPlayerAttributes#removeModifier(Player, IPlayerAttribute, AttributeModifier)}.
-     * @param par1 Player instance.
-     * @param par2 IPlayerAttribute.
-     * @param par3 AttributeModifier.
-     * @param par4 AttributeModifier value multiplier.
+     * @param attributesTriFunction {@link IPlayerAttributes#applyModifier(Player, IPlayerAttribute, AttributeModifier)} or {@link IPlayerAttributes#removeModifier(Player, IPlayerAttribute, AttributeModifier)}.
+     * @param player Player instance.
+     * @param playerAttribute IPlayerAttribute.
+     * @param modifier AttributeModifier.
+     * @param multiplier AttributeModifier value multiplier.
      */
-    public static void apply(TriFunction<Player, IPlayerAttribute, AttributeModifier, IPlayerAttributes> par0, Player par1, IPlayerAttribute par2, AttributeModifier par3, double par4) {
-        AttributeModifier var0 = new AttributeModifier(par3.getId(), par3.getName(), par3.getAmount() * par4, par3.getOperation());
+    public static void apply(TriFunction<Player, IPlayerAttribute, AttributeModifier, IPlayerAttributes> attributesTriFunction, Player player, IPlayerAttribute playerAttribute, AttributeModifier modifier, double multiplier) {
+        AttributeModifier var0 = new AttributeModifier(modifier.getId(), modifier.getName(), modifier.getAmount() * multiplier, modifier.getOperation());
 
-        par0.apply(par1, par2, var0);
+        attributesTriFunction.apply(player, playerAttribute, var0);
     }
 }
