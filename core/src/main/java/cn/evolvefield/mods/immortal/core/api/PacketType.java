@@ -27,14 +27,15 @@ public enum PacketType {
 	 * Only allows modification if the player's skill points are greater than or equal to 1.
 	 * Also subtracts one skill points from the player.
 	 */
-	SKILL((byte)2, PacketType::skill),
+	MONEY((byte)1, PacketType::money),
 	/**
 	 * Only allows modification if the player's refund points are greater than or equal to 1.
 	 * Also subtracts one refund points and adds one skill point.
 	 */
-	REFUND((byte)3, PacketType::refund);
+//	REFUND((byte)3, PacketType::refund)
+	;
 
-	private static final Map<Byte, PacketType> TYPES = Maths.enumLookupMap(PacketType.values(), v -> v.id());
+	private static final Map<Byte, PacketType> TYPES = Maths.enumLookupMap(PacketType.values(), PacketType::id);
 	private final byte id;
 	private final PacketFunction function;
 
@@ -43,38 +44,26 @@ public enum PacketType {
 		this.function = function;
 	}
 
-//	private static boolean level(final MinecraftServer server, final ServerPlayer player, final PlayerData data) {
-//		ExConfig config = ExAPI.getConfig();
-//		int requiredXp = config.requiredXp(player);
-//		int skillPoint = config.skillPointsPerLevelUp();
-//
-//		if(player.experienceLevel >= requiredXp) {
-//			player.addExperienceLevels(-requiredXp);
-//			data.addSkillPoints(skillPoint);
+
+
+	private static boolean money(final MinecraftServer server, final ServerPlayer player, final PlayerData data) {
+		if(data.moneyPoints() >= 1) {
+			data.addMoneyPoints(-1);
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+//	private static boolean refund(final MinecraftServer server, final ServerPlayer player, final PlayerData data) {
+//		if(data.refundPoints() >= 1) {
+//			data.addRefundPoints(-1);
+//			data.addSkillPoints(1);
 //			return true;
 //		} else {
 //			return false;
 //		}
 //	}
-
-	private static boolean skill(final MinecraftServer server, final ServerPlayer player, final PlayerData data) {
-		if(data.skillPoints() >= 1) {
-			data.addSkillPoints(-1);
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	private static boolean refund(final MinecraftServer server, final ServerPlayer player, final PlayerData data) {
-		if(data.refundPoints() >= 1) {
-			data.addRefundPoints(-1);
-			data.addSkillPoints(1);
-			return true;
-		} else {
-			return false;
-		}
-	}
 
 	/**
 	 * Gets the correct PacketType from the input. Or {@link #DEFAULT}.
