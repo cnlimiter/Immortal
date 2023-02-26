@@ -1,0 +1,66 @@
+{
+  "values": {
+    "minecraft:generic.max_health": {
+      "integer": "0.0"
+    },
+    "minecraft:generic.knockback_resistance": {
+      "multiplier": "10.0"
+    },
+
+    "im_core:age": {
+      "integer": "0.0"
+    },
+    "im_core:shou_yuan": {
+      "integer": "0.0"
+    },
+    "im_core:zi_zhi": {
+      "integer": "0.0"
+    },
+    "im_core:shen_shi": {
+      "integer": "0.0"
+    },
+    "im_core:wu_xing": {
+      "integer": "0.0"
+    },
+    "im_core:dun_su": {
+      "integer": "0.0"
+    },
+
+    "im_core:xiu_su": {
+      "integer": "0.0"
+    },
+    "im_core:xin_jing": {
+      "integer": "0.0"
+    },
+    "im_core:dan_du": {
+      "integer": "0.0"
+    },
+    "im_core:ling_gan": {
+      "integer": "0.0"
+    },
+
+    "im_core:jin": {
+      "integer": "0.0"
+    },
+    "im_core:mu": {
+      "integer": "0.0"
+    },
+    "im_core:shui": {
+      "integer": "0.0"
+    },
+    "im_core:huo": {
+      "integer": "0.0"
+    },
+    "im_core:tu": {
+      "integer": "0.0"
+    },
+
+    "im_core:dao_point": {
+      "integer": "0.0"
+    },
+
+    "im_core:money": {
+      "integer": "0.0"
+    }
+  }
+}

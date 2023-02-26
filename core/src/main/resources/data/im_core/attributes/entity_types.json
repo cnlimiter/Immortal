@@ -1,0 +1,28 @@
+{
+  "values": {
+    "minecraft:player": {
+      "im_core:age": 1.0,
+      "im_core:shou_yuan": 60.0,
+      "im_core:zi_zhi": 0.0,
+      "im_core:shen_shi": 0.0,
+      "im_core:wu_xing": 0.0,
+      "im_core:dun_su": 0.0,
+
+      "im_core:xiu_su": 0.0,
+      "im_core:xin_jing": 0.0,
+      "im_core:dan_du": 0.0,
+      "im_core:ling_gan": 0.0,
+
+      "im_core:jin": 0.0,
+      "im_core:mu": 0.0,
+      "im_core:shui": 0.0,
+      "im_core:huo": 0.0,
+      "im_core:tu": 0.0,
+
+      "im_core:dao_point": 0.0,
+
+      "im_core:money": 0.0
+
+    }
+  }
+}

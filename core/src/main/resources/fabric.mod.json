@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "im_core",
+  "version": "${version}",
+  "name": "Im-Core",
+  "description": "",
+  "authors": [
+    "cnlimiter"
+  ],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/core/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "cardinal-components": [
+      "cn.evolvefield.mods.immortal.core.common.cap.PlayerDataContainer"
+    ],
+    "client": [
+      "cn.evolvefield.mods.immortal.core.client.CoreClient"
+    ],
+    "main": [
+      "cn.evolvefield.mods.immortal.core.Core"
+    ]
+  },
+  "custom": {
+    "cardinal-components": [
+      "im_core:player_data"
+    ]
+  },
+  "mixins": [
+    "im_core.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.10",
+    "fabric": "*",
+    "minecraft": "1.19.3",
+    "dataattributes": ">=1.4.3",
+    "java": ">=17"
+  }
+}
