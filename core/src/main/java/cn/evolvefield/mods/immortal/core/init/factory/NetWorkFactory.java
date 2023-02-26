@@ -4,7 +4,7 @@ import cn.evolvefield.mods.immortal.core.Constant;
 import cn.evolvefield.mods.immortal.core.api.CoreApi;
 import cn.evolvefield.mods.immortal.core.api.EntityAttributeSupplier;
 import cn.evolvefield.mods.immortal.core.api.PacketType;
-import cn.evolvefield.mods.immortal.core.api.PlayerData;
+import cn.evolvefield.mods.immortal.core.api.data.PlayerData;
 import com.github.clevernucleus.dataattributes.api.DataAttributesAPI;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.minecraft.nbt.CompoundTag;

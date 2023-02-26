@@ -1,5 +1,6 @@
 package cn.evolvefield.mods.immortal.core.api;
 
+import cn.evolvefield.mods.immortal.core.api.data.PlayerData;
 import dev.onyxstudios.cca.api.v3.component.ComponentKey;
 import dev.onyxstudios.cca.api.v3.component.ComponentRegistry;
 import net.minecraft.resources.ResourceLocation;

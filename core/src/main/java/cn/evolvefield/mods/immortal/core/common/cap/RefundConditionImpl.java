@@ -1,6 +1,6 @@
 package cn.evolvefield.mods.immortal.core.common.cap;
 
-import cn.evolvefield.mods.immortal.core.api.PlayerData;
+import cn.evolvefield.mods.immortal.core.api.data.PlayerData;
 import net.minecraft.world.entity.player.Player;
 
 import java.util.ArrayList;

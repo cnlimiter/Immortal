@@ -1,5 +1,6 @@
 package cn.evolvefield.mods.immortal.core.api;
 
+import cn.evolvefield.mods.immortal.core.api.data.PlayerData;
 import com.github.clevernucleus.dataattributes.api.util.Maths;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;

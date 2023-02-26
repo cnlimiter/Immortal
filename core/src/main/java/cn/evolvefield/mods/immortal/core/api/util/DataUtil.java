@@ -29,7 +29,7 @@ public class DataUtil {
         ResourceLocation identifier = new ResourceLocation(supplier.getId().toString());
         EntityAttributeSupplier attribute = EntityAttributeSupplier.of(identifier);
         DataAttributesAPI.ifPresent(player, attribute, 0, a -> {
-            data.add(attribute, value);
+            data.set(attribute, value);
             return 0;
         });
     }
@@ -39,7 +39,7 @@ public class DataUtil {
         ResourceLocation identifier = new ResourceLocation(supplier.getId().toString());
         EntityAttributeSupplier attribute = EntityAttributeSupplier.of(identifier);
         DataAttributesAPI.ifPresent(player, attribute, 0, a -> {
-            data.add(attribute, a - value);
+            data.set(attribute, a - value);
             return 0;
         });
     }
@@ -49,7 +49,7 @@ public class DataUtil {
         ResourceLocation identifier = new ResourceLocation(supplier.getId().toString());
         EntityAttributeSupplier attribute = EntityAttributeSupplier.of(identifier);
         DataAttributesAPI.ifPresent(player, attribute, 0, a -> {
-            data.add(attribute, a * value);
+            data.set(attribute, a * value);
             return 0;
         });
     }

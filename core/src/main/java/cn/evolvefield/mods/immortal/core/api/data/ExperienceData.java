@@ -1,4 +1,4 @@
-package cn.evolvefield.mods.immortal.core.api;
+package cn.evolvefield.mods.immortal.core.api.data;
 
 import dev.onyxstudios.cca.api.v3.component.tick.ServerTickingComponent;
 

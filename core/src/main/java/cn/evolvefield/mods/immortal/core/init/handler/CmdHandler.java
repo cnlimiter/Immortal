@@ -47,6 +47,8 @@ public class CmdHandler {
     }
 
 
+
+    //test
     private static int execute(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         //context.getSource().getPlayerOrException().getAttribute(CoreApi.AGE.get()).setBaseValue(context.getArgument("value", Long.class));
 

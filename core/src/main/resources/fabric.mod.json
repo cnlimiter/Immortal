@@ -13,7 +13,7 @@
   "environment": "*",
   "entrypoints": {
     "cardinal-components": [
-      "cn.evolvefield.mods.immortal.core.common.cap.PlayerDataContainer"
+      "cn.evolvefield.mods.immortal.core.common.cap.base.PlayerDataContainer"
     ],
     "client": [
       "cn.evolvefield.mods.immortal.core.client.CoreClient"

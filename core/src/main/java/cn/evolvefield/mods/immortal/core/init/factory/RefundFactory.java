@@ -1,7 +1,7 @@
 package cn.evolvefield.mods.immortal.core.init.factory;
 
 import cn.evolvefield.mods.immortal.core.api.CoreApi;
-import cn.evolvefield.mods.immortal.core.api.PlayerData;
+import cn.evolvefield.mods.immortal.core.api.data.PlayerData;
 import com.github.clevernucleus.dataattributes.api.DataAttributesAPI;
 import net.minecraft.world.entity.player.Player;
 

@@ -1,8 +1,8 @@
-package cn.evolvefield.mods.immortal.core.common.cap;
+package cn.evolvefield.mods.immortal.core.common.cap.base;
 
 import cn.evolvefield.mods.immortal.core.api.CoreApi;
 import cn.evolvefield.mods.immortal.core.api.EntityAttributeSupplier;
-import cn.evolvefield.mods.immortal.core.api.PlayerData;
+import cn.evolvefield.mods.immortal.core.api.data.PlayerData;
 import com.github.clevernucleus.dataattributes.api.attribute.IEntityAttributeInstance;
 import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
 import dev.onyxstudios.cca.api.v3.component.sync.ComponentPacketWriter;
@@ -14,7 +14,6 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeMap;
@@ -34,10 +33,15 @@ import java.util.function.Consumer;
  * Description:
  */
 public class PlayerDataManager implements PlayerData, AutoSyncedComponent {
-    private static final String KEY_SET = "Set", KEY_REMOVE = "Remove", KEY_RESET = "Reset", KEY_MODIFIERS = "Modifiers", KEY_REFUND_POINTS = "RefundPoints", KEY_SKILL_POINTS = "SkillPoints";
+    private static final String
+            KEY_SET = "Set",
+            KEY_REMOVE = "Remove",
+            KEY_RESET = "Reset",
+            KEY_MODIFIERS = "Modifiers",
+            KEY_MONEY_POINTS = "MoneyPoints";//灵石
     private final Player player;
     private final Map<ResourceLocation, Double> data;
-    private int refundPoints, skillPoints;
+    private int refundPoints, moneyPoints;
     public boolean hasNotifiedLevelUp;
 
     public PlayerDataManager(final Player player) {
@@ -149,8 +153,7 @@ public class PlayerDataManager implements PlayerData, AutoSyncedComponent {
             list.add(StringTag.valueOf(ResourceLocation.toString()));
         }
 
-        this.refundPoints = 0;
-        this.skillPoints = 0;
+        this.moneyPoints = 0;
         this.sync((buf, player) -> {
             CompoundTag tag = new CompoundTag();
             tag.put(KEY_RESET, list);
@@ -159,44 +162,21 @@ public class PlayerDataManager implements PlayerData, AutoSyncedComponent {
     }
 
     @Override
-    public void addSkillPoints(final int pointsIn) {
-        this.skillPoints += pointsIn;
+    public void addMoneyPoints(final int pointsIn) {
+        this.moneyPoints += pointsIn;
         this.sync((buf, player) -> {
             CompoundTag tag = new CompoundTag();
-            tag.putInt(KEY_SKILL_POINTS, this.skillPoints);
+            tag.putInt(KEY_MONEY_POINTS, this.moneyPoints);
             buf.writeNbt(tag);
         });
     }
 
-    @Override
-    public int addRefundPoints(final int pointsIn) {
-        final int previous = this.refundPoints;
-        double maxRefundPt = 0.0D;
-
-        for(var refundCondition : RefundConditionImpl.get()) {
-            maxRefundPt += refundCondition.apply(this, this.player);
-        }
-
-        double refund = Mth.clamp((double)(this.refundPoints + pointsIn), 0.0D, maxRefundPt);
-        this.refundPoints = Math.round((float)refund);
-        this.sync((buf, player) -> {
-            CompoundTag tag = new CompoundTag();
-            tag.putInt(KEY_REFUND_POINTS, this.refundPoints);
-            buf.writeNbt(tag);
-        });
-
-        return this.refundPoints - previous;
-    }
 
     @Override
-    public int skillPoints() {
-        return this.skillPoints;
+    public int moneyPoints() {
+        return this.moneyPoints;
     }
 
-    @Override
-    public int refundPoints() {
-        return this.refundPoints;
-    }
 
     @Override
     public boolean shouldSyncWith(ServerPlayer player) {
@@ -228,8 +208,7 @@ public class PlayerDataManager implements PlayerData, AutoSyncedComponent {
                 this.data.remove(ResourceLocation);
             }
 
-            this.refundPoints = 0;
-            this.skillPoints = 0;
+            this.moneyPoints = 0;
             this.hasNotifiedLevelUp = false;
         }
 
@@ -237,20 +216,16 @@ public class PlayerDataManager implements PlayerData, AutoSyncedComponent {
             this.readModifiersFromNbt(tag, this.data::put);
         }
 
-        if(tag.contains(KEY_REFUND_POINTS)) {
-            this.refundPoints = tag.getInt(KEY_REFUND_POINTS);
-        }
 
-        if(tag.contains(KEY_SKILL_POINTS)) {
-            this.skillPoints = tag.getInt(KEY_SKILL_POINTS);
+        if(tag.contains(KEY_MONEY_POINTS)) {
+            this.moneyPoints = tag.getInt(KEY_MONEY_POINTS);
         }
     }
 
     @Override
     public void readFromNbt(CompoundTag tag) {
         this.readModifiersFromNbt(tag, this::trySet);
-        this.refundPoints = tag.getInt(KEY_REFUND_POINTS);
-        this.skillPoints = tag.getInt(KEY_SKILL_POINTS);
+        this.moneyPoints = tag.getInt(KEY_MONEY_POINTS);
         this.hasNotifiedLevelUp = tag.getBoolean("NotifiedLevelUp");
     }
 
@@ -267,8 +242,7 @@ public class PlayerDataManager implements PlayerData, AutoSyncedComponent {
         }
 
         tag.put(KEY_MODIFIERS, modifiers);
-        tag.putInt(KEY_REFUND_POINTS, this.refundPoints);
-        tag.putInt(KEY_SKILL_POINTS, this.skillPoints);
+        tag.putInt(KEY_MONEY_POINTS, this.moneyPoints);
         tag.putBoolean("NotifiedLevelUp", this.hasNotifiedLevelUp);
     }
 }

@@ -1,5 +1,6 @@
-package cn.evolvefield.mods.immortal.core.api;
+package cn.evolvefield.mods.immortal.core.api.data;
 
+import cn.evolvefield.mods.immortal.core.api.EntityAttributeSupplier;
 import dev.onyxstudios.cca.api.v3.component.Component;
 
 /**
@@ -24,7 +25,7 @@ public interface PlayerData extends Component {
     void set(final EntityAttributeSupplier attributeIn, final double valueIn);
 
     /**
-     * Combination of {@link #get(net.minecraft.world.entity.ai.attributes.Attribute)} and {@link #set(net.minecraft.world.entity.ai.attributes.Attribute, double)}.
+     * Combination of {@link #get(EntityAttributeSupplier)}  and {@link #set(EntityAttributeSupplier, double)}.
      * @param attributeIn
      * @param valueIn
      */
@@ -42,25 +43,16 @@ public interface PlayerData extends Component {
     void reset();
 
     /**
-     * Adds skill points to the player.
+     * Adds money points to the player.
      * @param pointsIn
      */
-    void addSkillPoints(final int pointsIn);
+    void addMoneyPoints(final int pointsIn);
+
 
     /**
-     * Adds refund points to the player.
-     * @param pointsIn
-     * @return
+     * @return Current money points.
      */
-    int addRefundPoints(final int pointsIn);
+    int moneyPoints();
 
-    /**
-     * @return Current skill points.
-     */
-    int skillPoints();
 
-    /**
-     * @return Current refund points.
-     */
-    int refundPoints();
 }

@@ -1,4 +1,4 @@
-package cn.evolvefield.mods.immortal.core.common.dao;
+package cn.evolvefield.mods.immortal.core.common.cap.dao;
 
 /**
  * Project: Immortal

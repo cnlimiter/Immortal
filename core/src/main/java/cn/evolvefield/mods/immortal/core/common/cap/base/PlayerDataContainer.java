@@ -1,4 +1,4 @@
-package cn.evolvefield.mods.immortal.core.common.cap;
+package cn.evolvefield.mods.immortal.core.common.cap.base;
 
 import cn.evolvefield.mods.immortal.core.api.CoreApi;
 import dev.onyxstudios.cca.api.v3.entity.EntityComponentFactoryRegistry;
