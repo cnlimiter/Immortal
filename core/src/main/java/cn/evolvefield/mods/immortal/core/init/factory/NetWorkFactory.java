@@ -50,4 +50,20 @@ public class NetWorkFactory {
             }
         });
     }
+
+
+    public static void switchScreen(MinecraftServer server, ServerPlayer player, ServerGamePacketListenerImpl handler, FriendlyByteBuf buf, PacketSender responseSender) {
+        int pageId = buf.readInt();
+
+        server.execute(() -> {
+            if(player != null) {
+                if(pageId < 0) {
+                    player.closeContainer();
+                } else {
+                    player.openMenu(new ScreenFactory(pageId));
+
+                }
+            }
+        });
+    }
 }
