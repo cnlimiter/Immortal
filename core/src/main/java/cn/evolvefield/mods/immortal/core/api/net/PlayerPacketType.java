@@ -43,15 +43,6 @@ public enum PlayerPacketType {
 		}
 	}
 
-	private static boolean dao(final MinecraftServer server, final ServerPlayer player, final DaoData data) {
-		if(data.daoPoints() >= 1) {
-			data.addDaoPoints(-1);
-			return true;
-		} else {
-			return false;
-		}
-	}
-
 //	private static boolean refund(final MinecraftServer server, final ServerPlayer player, final PlayerData data) {
 //		if(data.refundPoints() >= 1) {
 //			data.addRefundPoints(-1);

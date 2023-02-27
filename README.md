@@ -10,7 +10,7 @@ _基于国产修仙游戏[觅长生](https://baike.baidu.com/item/%E8%A7%85%E9%9
 </div>
 <p align="center">
     <a href="https://github.com/cnlimiter/Immortal/issues"><img src="https://img.shields.io/github/issues/cnlimiter/Immortal?style=flat" alt="issues" /></a>
-    <img src="https://img.shields.io/badge/license-AAR-green" alt="License">
+    <img src="https://img.shields.io/badge/license-ARR-green" alt="License">
 
 </p>
 

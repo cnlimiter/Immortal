@@ -42,12 +42,10 @@ public class PlayerDataManager implements PlayerData, AutoSyncedComponent {
     private final Player player;
     private final Map<ResourceLocation, Double> data;
     private int  moneyPoints;
-    public boolean hasNotifiedLevelUp;
 
     public PlayerDataManager(final Player player) {
         this.player = player;
         this.data = new HashMap<>();
-        this.hasNotifiedLevelUp = false;
     }
 
     private void sync(ComponentPacketWriter packet) {
@@ -209,7 +207,6 @@ public class PlayerDataManager implements PlayerData, AutoSyncedComponent {
             }
 
             this.moneyPoints = 0;
-            this.hasNotifiedLevelUp = false;
         }
 
         if(tag.contains(KEY_MODIFIERS)) {
@@ -226,7 +223,6 @@ public class PlayerDataManager implements PlayerData, AutoSyncedComponent {
     public void readFromNbt(CompoundTag tag) {
         this.readModifiersFromNbt(tag, this::trySet);
         this.moneyPoints = tag.getInt(KEY_MONEY_POINTS);
-        this.hasNotifiedLevelUp = tag.getBoolean("NotifiedLevelUp");
     }
 
     @Override
@@ -243,6 +239,5 @@ public class PlayerDataManager implements PlayerData, AutoSyncedComponent {
 
         tag.put(KEY_MODIFIERS, modifiers);
         tag.putInt(KEY_MONEY_POINTS, this.moneyPoints);
-        tag.putBoolean("NotifiedLevelUp", this.hasNotifiedLevelUp);
     }
 }
