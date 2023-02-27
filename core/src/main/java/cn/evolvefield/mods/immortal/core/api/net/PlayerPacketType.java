@@ -1,5 +1,6 @@
-package cn.evolvefield.mods.immortal.core.api;
+package cn.evolvefield.mods.immortal.core.api.net;
 
+import cn.evolvefield.mods.immortal.core.api.data.DaoData;
 import cn.evolvefield.mods.immortal.core.api.data.PlayerData;
 import com.github.clevernucleus.dataattributes.api.util.Maths;
 import net.minecraft.server.MinecraftServer;
@@ -13,42 +14,38 @@ import java.util.Map;
  * @author CleverNucleus
  *
  */
-public enum PacketType {
-	/**
-	 * Does nothing extra - just allows the server to modify PlayerEx's attribute modifiers.
-	 */
+public enum PlayerPacketType {
+
 	DEFAULT((byte)0, (server, player, data) -> true),
-	/**
-	 * Only allows modification if the player's experience levels are greater than or equal to the required xp to level up.
-	 * Also removes those experience levels from the player and adds 1 skill point.
-	 */
-//	LEVEL((byte)1, PacketType::level),
-	/**
-	 * Only allows modification if the player's skill points are greater than or equal to 1.
-	 * Also subtracts one skill points from the player.
-	 */
-	MONEY((byte)1, PacketType::money),
-	/**
-	 * Only allows modification if the player's refund points are greater than or equal to 1.
-	 * Also subtracts one refund points and adds one skill point.
-	 */
+
+	MONEY((byte)1, PlayerPacketType::money),
+
+
 //	REFUND((byte)3, PacketType::refund)
 	;
 
-	private static final Map<Byte, PacketType> TYPES = Maths.enumLookupMap(PacketType.values(), PacketType::id);
+	private static final Map<Byte, PlayerPacketType> TYPES = Maths.enumLookupMap(PlayerPacketType.values(), PlayerPacketType::id);
 	private final byte id;
-	private final PacketFunction function;
+	private final PlayerPacketFunction function;
 
-	private PacketType(final byte id, PacketFunction function) {
+	private PlayerPacketType(final byte id, PlayerPacketFunction function) {
 		this.id = id;
 		this.function = function;
 	}
 
 
-
 	private static boolean money(final MinecraftServer server, final ServerPlayer player, final PlayerData data) {
 		if(data.moneyPoints() >= 1) {
 			data.addMoneyPoints(-1);
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	private static boolean dao(final MinecraftServer server, final ServerPlayer player, final DaoData data) {
+		if(data.daoPoints() >= 1) {
+			data.addDaoPoints(-1);
 			return true;
 		} else {
 			return false;
@@ -65,32 +62,20 @@ public enum PacketType {
 //		}
 //	}
 
-	/**
-	 * Gets the correct PacketType from the input. Or {@link #DEFAULT}.
-	 * @param id
-	 * @return
-	 */
-	public static PacketType fromId(final byte id) {
+
+	public static PlayerPacketType fromId(final byte id) {
 		return TYPES.getOrDefault(id, DEFAULT);
 	}
 
-	/**
-	 * @return The PacketType's byte id.
-	 */
 	public byte id() {
 		return this.id;
 	}
 
-	/**
-	 *
-	 * @param server
-	 * @param player
-	 * @param data
-	 * @return
-	 */
+
 	public boolean test(final MinecraftServer server, final ServerPlayer player, final PlayerData data) {
 		return this.function.apply(server, player, data);
 	}
+
 
 	@Override
 	public String toString() {
@@ -98,7 +83,9 @@ public enum PacketType {
 	}
 
 	@FunctionalInterface
-	public static interface PacketFunction {
+	public static interface PlayerPacketFunction {
 		boolean apply(final MinecraftServer server, final ServerPlayer player, final PlayerData playerData);
 	}
+
+
 }
