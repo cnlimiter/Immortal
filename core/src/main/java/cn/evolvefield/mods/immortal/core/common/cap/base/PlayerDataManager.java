@@ -41,12 +41,12 @@ public class PlayerDataManager implements PlayerData, AutoSyncedComponent {
             KEY_MONEY_POINTS = "MoneyPoints";//灵石
     private final Player player;
     private final Map<ResourceLocation, Double> data;
-    private int refundPoints, moneyPoints;
+    private int  moneyPoints;
     public boolean hasNotifiedLevelUp;
 
     public PlayerDataManager(final Player player) {
         this.player = player;
-        this.data = new HashMap<ResourceLocation, Double>();
+        this.data = new HashMap<>();
         this.hasNotifiedLevelUp = false;
     }
 

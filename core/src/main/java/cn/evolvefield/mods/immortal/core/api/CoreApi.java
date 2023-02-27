@@ -1,5 +1,6 @@
 package cn.evolvefield.mods.immortal.core.api;
 
+import cn.evolvefield.mods.immortal.core.api.data.DaoData;
 import cn.evolvefield.mods.immortal.core.api.data.PlayerData;
 import dev.onyxstudios.cca.api.v3.component.ComponentKey;
 import dev.onyxstudios.cca.api.v3.component.ComponentRegistry;
@@ -26,7 +27,8 @@ public class CoreApi {
     /** The UUID PlayerEx modifiers use. */
     public static final UUID IM_MODIFIER_ID = UUID.fromString("0f320cdd-8b2e-47a6-917e-adca8f899495");
     public static final ComponentKey<PlayerData> PLAYER_DATA = ComponentRegistry.getOrCreate(new ResourceLocation(MODID, "player_data"), PlayerData.class);
-    //public static final ComponentKey<ExperienceData> EXPERIENCE_DATA = ComponentRegistry.getOrCreate(new ResourceLocation(MODID, "experience_data"), ExperienceData.class);
+    public static final ComponentKey<DaoData> DAO_DATA = ComponentRegistry.getOrCreate(new ResourceLocation(MODID, "dao_data"), DaoData.class);
+//public static final ComponentKey<ExperienceData> EXPERIENCE_DATA = ComponentRegistry.getOrCreate(new ResourceLocation(MODID, "experience_data"), ExperienceData.class);
 
     //基础属性
     public static final EntityAttributeSupplier AGE = define("age");
