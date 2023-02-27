@@ -13,7 +13,8 @@
   "environment": "*",
   "entrypoints": {
     "cardinal-components": [
-      "cn.evolvefield.mods.immortal.core.common.cap.base.PlayerDataContainer"
+      "cn.evolvefield.mods.immortal.core.common.cap.base.PlayerDataContainer",
+      "cn.evolvefield.mods.immortal.core.common.cap.dao.DaoDataContainer"
     ],
     "client": [
       "cn.evolvefield.mods.immortal.core.client.CoreClient"
@@ -24,7 +25,8 @@
   },
   "custom": {
     "cardinal-components": [
-      "im_core:player_data"
+      "im_core:player_data",
+      "im_core:dao_data"
     ]
   },
   "mixins": [

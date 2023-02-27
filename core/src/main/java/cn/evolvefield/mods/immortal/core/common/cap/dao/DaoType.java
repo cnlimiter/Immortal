@@ -12,13 +12,13 @@ public enum DaoType {
     SHUI(2, "dao.shui"),
     HUO(3, "dao.huo"),
     TU(4, "dao.tu"),
-    SHEN(3, "dao.shen"),
-    TI(3, "dao.ti"),
-    JIAN(3, "dao.jian"),
-    QI(3, "dao.qi"),
-    ZHEN(3, "dao.zhen"),
-    DAN(3, "dao.dan"),
-    LIAN_QI(3, "dao.lian_qi")
+    SHEN(5, "dao.shen"),
+    TI(6, "dao.ti"),
+    JIAN(7, "dao.jian"),
+    QI(8, "dao.qi"),
+    ZHEN(9, "dao.zhen"),
+    DAN(10, "dao.dan"),
+    LIAN_QI(11, "dao.lian_qi")
     ;
     public final int index;
     public final String displayName;
@@ -27,4 +27,10 @@ public enum DaoType {
         this.index = index;
         this.displayName = displayName;
     }
+
+    public static DaoType of(int index){
+        return DaoType.values()[index];
+    }
+
+
 }
