@@ -19,7 +19,7 @@ import static cn.evolvefield.mods.immortal.core.Constant.MODID;
  * Date: 2023/2/26 10:03
  * Description:
  */
-public class CoreApi {
+public final class CoreApi {
 
     /** Round value to integer property attached to some attributes. */
     public static final String INTEGER_PROPERTY = "integer";

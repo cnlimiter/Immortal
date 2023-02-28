@@ -1,7 +1,6 @@
 package cn.evolvefield.mods.immortal.core.common.cap.dao;
 
 import cn.evolvefield.mods.immortal.core.api.CoreApi;
-import cn.evolvefield.mods.immortal.core.common.cap.base.PlayerDataManager;
 import dev.onyxstudios.cca.api.v3.entity.EntityComponentFactoryRegistry;
 import dev.onyxstudios.cca.api.v3.entity.EntityComponentInitializer;
 import dev.onyxstudios.cca.api.v3.entity.RespawnCopyStrategy;

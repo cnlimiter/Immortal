@@ -4,7 +4,6 @@ import cn.evolvefield.mods.immortal.core.api.CoreApi;
 import cn.evolvefield.mods.immortal.core.api.EntityAttributeSupplier;
 import com.github.clevernucleus.dataattributes.api.DataAttributesAPI;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.player.Player;
 
 /**

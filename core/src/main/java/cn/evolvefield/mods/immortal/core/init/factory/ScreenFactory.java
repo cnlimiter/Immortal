@@ -26,7 +26,7 @@ public class ScreenFactory implements ExtendedScreenHandlerFactory {
     }
 
     public static ExtendedScreenHandlerType<Handler> type() {
-        return new ExtendedScreenHandlerType<>((syncId, inv, buf) -> new ScreenFactory.Handler(syncId, inv, buf.readInt()));
+        return new ExtendedScreenHandlerType<>((syncId, inv, buf) -> new Handler(syncId, inv, buf.readInt()));
     }
 
     @Override

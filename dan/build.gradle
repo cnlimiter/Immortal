@@ -6,39 +6,16 @@ plugins {
 
 archivesBaseName = "${mod_name}-fabric-${minecraft_version}"
 
-
-repositories {
-    flatDir {
-        dirs "libs"
-    }
-}
-
 dependencies {
-    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    minecraft "com.mojang:minecraft:${minecraft_version}"
     mappings loom.layered() {
         officialMojangMappings()
         parchment("org.parchmentmc.data:parchment-${project.minecraft_version}:${project.parchement_version}@zip")
     }
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-
-    modImplementation include(files('libs/dataattributes-1.4.3.jar'))
-    //modImplementation include("maven.modrinth:offline-player-cache:${project.opc_version}")
-
-    modImplementation include("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cardinal_components_version}")
-    modImplementation include( "dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cardinal_components_version}")
-    modImplementation include( "dev.onyxstudios.cardinal-components-api:cardinal-components-chunk:${project.cardinal_components_version}")
-
-
-    modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
-        exclude(group: "net.fabricmc.fabric-api")
-    }
-
-    modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}") {
-        exclude(group: "net.fabricmc.fabric-api")
-    }
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
+    implementation project(":core")
 }
 
 loom {
