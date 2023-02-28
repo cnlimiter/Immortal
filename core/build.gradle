@@ -1,6 +1,7 @@
 plugins {
-    id 'fabric-loom' version '1.1-SNAPSHOT'
+    id 'fabric-loom' version '1.0-SNAPSHOT'
     id 'maven-publish'
+    id 'java'
 }
 
 version = project.mod_version
@@ -36,13 +37,12 @@ repositories {
         }
     }
     flatDir {
-       dirs "libs"
+        dirs "libs"
     }
 }
 
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    //mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     mappings loom.layered() {
         officialMojangMappings()
         parchment("org.parchmentmc.data:parchment-${project.minecraft_version}:${project.parchement_version}@zip")
@@ -53,7 +53,6 @@ dependencies {
 
     modImplementation include("org.spongepowered:configurate-hocon:${project.hocon_version}")
 
-    //modImplementation include("maven.modrinth:data-attributes:${project.data_attributes_version}")
     modImplementation include(files('libs/dataattributes-1.4.3.jar'))
     //modImplementation include("maven.modrinth:offline-player-cache:${project.opc_version}")
 
@@ -69,8 +68,6 @@ dependencies {
     modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}") {
         exclude(group: "net.fabricmc.fabric-api")
     }
-
-
 }
 
 processResources {
@@ -82,21 +79,14 @@ processResources {
     }
 }
 
-def targetJavaVersion = 17
 tasks.withType(JavaCompile).configureEach {
-    it.options.encoding = "UTF-8"
-    if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
-        it.options.release = targetJavaVersion
-    }
+    it.options.encoding = 'UTF-8'
 }
 
-java {
-    def javaVersion = JavaVersion.toVersion(targetJavaVersion)
-    if (JavaVersion.current() < javaVersion) {
-        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
-    }
-    archivesBaseName = project.archives_base_name
-    withSourcesJar()
+tasks.withType(Javadoc).configureEach {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    it.options.encoding = 'UTF-8'
+
 }
 
 jar {
@@ -104,6 +94,13 @@ jar {
         rename { "${it}_${project.archivesBaseName}" }
     }
 }
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+java.withSourcesJar()
+java.withJavadocJar()
+
+
+
 
 publishing {
     publications {
@@ -126,3 +123,4 @@ publishing {
         }
     }
 }
+
