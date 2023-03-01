@@ -2,7 +2,7 @@
     "schemaVersion": 1,
     "id": "modid",
     "version": "${version}",
-  
+
     "name": "Example Mod",
     "description": "This is an example description! Tell everyone what your mod is about!",
     "authors": [
@@ -12,20 +12,23 @@
       "homepage": "https://fabricmc.net/",
       "sources": "https://github.com/FabricMC/fabric-example-mod"
     },
-  
+
     "license": "CC0-1.0",
     "icon": "assets/modid/icon.png",
-  
+
     "environment": "*",
     "entrypoints": {
       "main": [
-        "com.example.examplemod.ExampleMod"
+        "cn.evolvefield.mods.immortal.dan.Dan"
+      ],
+      "client": [
+        "cn.evolvefield.mods.immortal.dan.client.DanClient"
       ]
     },
     "mixins": [
       "modid.mixins.json"
     ],
-  
+
     "depends": {
       "fabricloader": ">=0.14",
       "fabric": "*",
@@ -36,4 +39,3 @@
       "another-mod": "*"
     }
   }
-  
