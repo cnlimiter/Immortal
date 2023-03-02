@@ -1,5 +1,7 @@
 package cn.evolvefield.mods.immortal.dan.core.cao;
 
+import cn.evolvefield.mods.immortal.core.common.cap.dao.DaoType;
+
 /**
  * Project: Immortal
  * Author: cnlimiter
@@ -30,6 +32,10 @@ public enum ZhuType {
 
     private static String prefix(String name){
         return "type.cao.zhu." + name;
+    }
+
+    public static ZhuType of(int index){
+        return ZhuType.values()[index];
     }
 
 }

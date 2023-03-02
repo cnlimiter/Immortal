@@ -25,5 +25,8 @@ public enum YinType {
     private static String prefix(String name){
         return "type.cao.yin." + name;
     }
+    public static YinType of(int index){
+        return YinType.values()[index];
+    }
 
 }

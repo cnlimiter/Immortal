@@ -53,5 +53,8 @@ public enum FuType {
     private static String prefix(String name){
         return "type.cao.fu." + name;
     }
+    public static FuType of(int index){
+        return FuType.values()[index];
+    }
 
 }
