@@ -1,5 +1,8 @@
 package cn.evolvefield.mods.immortal.dan.core.cao;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+
 /**
  * Project: Immortal
  * Author: cnlimiter
@@ -56,5 +59,6 @@ public enum FuType {
     public static FuType of(int index){
         return FuType.values()[index];
     }
+
 
 }

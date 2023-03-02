@@ -1,9 +1,17 @@
 package cn.evolvefield.mods.immortal.dan.core.cao;
 
 import com.google.gson.JsonObject;
+import com.google.gson.annotations.Expose;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementRewards;
+import net.minecraft.advancements.Criterion;
+import net.minecraft.advancements.DisplayInfo;
 import net.minecraft.advancements.critereon.DeserializationContext;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
+
+import java.util.Map;
 
 /**
  * Project: Immortal
@@ -14,12 +22,19 @@ import net.minecraft.util.GsonHelper;
 public class Cao {
 
 
+    @Expose
     private final String id;
+    @Expose
     private final int level;
+    @Expose
     private final ZhuType zhu;
+    @Expose
     private final FuType fu;
+    @Expose
     private final YinType yin;
+    @Expose
     private final int value;
+    @Expose
     private final int cost;
     public Cao(String id, int level, ZhuType zhu, FuType fu, YinType yin, int value, int cost){
         this.id = id;
@@ -59,18 +74,6 @@ public class Cao {
 
     public int getCost() {
         return cost;
-    }
-
-    public static Cao fromJson(JsonObject json){
-        String id = json.has("id") ? GsonHelper.getAsString(json, "id") : null;
-        int level = json.has("level") ? GsonHelper.getAsInt(json, "level") : 0;
-        ZhuType zhu = json.has("zhu") ? ZhuType.of(GsonHelper.getAsInt(json, "zhu")) : null;
-        FuType fu = json.has("fu") ? FuType.of(GsonHelper.getAsInt(json, "fu")) : null;
-        YinType yin = json.has("yin") ? YinType.of(GsonHelper.getAsInt(json, "yin")) : null;
-        int value = json.has("value") ? GsonHelper.getAsInt(json, "value") : 0;
-        int cost = json.has("cost") ? GsonHelper.getAsInt(json, "cost") : 0;
-
-        return new Cao(id, level, zhu, fu, yin, value, cost);
     }
 
     @Override
