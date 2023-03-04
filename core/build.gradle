@@ -4,7 +4,7 @@ plugins {
     id 'idea'
 }
 
-archivesBaseName = "${mod_name}-fabric-${minecraft_version}"
+archivesBaseName = "${mod_name}-core-${minecraft_version}"
 
 
 repositories {
@@ -28,7 +28,6 @@ dependencies {
     modImplementation include("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cardinal_components_version}")
     modImplementation include("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cardinal_components_version}")
     modImplementation include("dev.onyxstudios.cardinal-components-api:cardinal-components-chunk:${project.cardinal_components_version}")
-    modImplementation include("cn.evolvefield.mods:multiblocklib:${project.multiblocklib_version}")
 
 
     modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
@@ -66,6 +65,7 @@ processResources {
         expand "version": project.version
     }
 }
+
 
 tasks.register('prepareWorkspace') {
 
