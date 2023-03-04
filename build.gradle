@@ -1,9 +1,14 @@
 plugins{
     id "java"
 }
-subprojects {
 
-    apply plugin: 'java'
+
+subprojects {
+    {
+        apply plugin: 'java'
+    }
+
+
 
     java.toolchain.languageVersion = JavaLanguageVersion.of(17)
     java.withSourcesJar()
@@ -75,6 +80,10 @@ subprojects {
             content {
                 includeGroup "maven.modrinth"
             }
+        }
+        maven {
+            name = "Nova"
+            url = "https://maven.nova-committee.cn/releases"
         }
 
     }

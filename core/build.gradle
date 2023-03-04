@@ -23,12 +23,12 @@ dependencies {
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-    modImplementation include(files('libs/dataattributes-1.4.3.jar'))
+    modImplementation include("com.github.clevernucleus:dataattributes:${project.dataattributes_version}")
     //modImplementation include("maven.modrinth:offline-player-cache:${project.opc_version}")
-
     modImplementation include("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cardinal_components_version}")
-    modImplementation include( "dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cardinal_components_version}")
-    modImplementation include( "dev.onyxstudios.cardinal-components-api:cardinal-components-chunk:${project.cardinal_components_version}")
+    modImplementation include("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cardinal_components_version}")
+    modImplementation include("dev.onyxstudios.cardinal-components-api:cardinal-components-chunk:${project.cardinal_components_version}")
+    modImplementation include("cn.evolvefield.mods:multiblocklib:${project.multiblocklib_version}")
 
 
     modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {

@@ -76,5 +76,10 @@
       <option name="name" value="TerraformersMC" />
       <option name="url" value="https://maven.terraformersmc.com" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="Nova" />
+      <option name="name" value="Nova" />
+      <option name="url" value="https://maven.nova-committee.cn/releases" />
+    </remote-repository>
   </component>
 </project>
