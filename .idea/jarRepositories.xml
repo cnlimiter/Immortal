@@ -81,5 +81,15 @@
       <option name="name" value="Nova" />
       <option name="url" value="https://maven.nova-committee.cn/releases" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="https://maven.saps.dev/minecraft" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="curse" />
+      <option name="name" value="curse" />
+      <option name="url" value="https://www.cursemaven.com" />
+    </remote-repository>
   </component>
 </project>

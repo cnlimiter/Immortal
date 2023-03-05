@@ -1,6 +1,7 @@
 package cn.evolvefield.mods.immortal.dan.core.cao;
 
 import cn.evolvefield.mods.immortal.core.common.cap.dao.DaoType;
+import net.minecraft.world.item.ItemStack;
 
 /**
  * Project: Immortal

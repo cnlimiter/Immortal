@@ -33,7 +33,7 @@ public class Cao {
     @Expose
     private final YinType yin;
     @Expose
-    private final int value;
+    private final int value;//药力
     @Expose
     private final int cost;
     public Cao(String id, int level, ZhuType zhu, FuType fu, YinType yin, int value, int cost){

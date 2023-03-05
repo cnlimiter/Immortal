@@ -85,7 +85,20 @@ subprojects {
             name = "Nova"
             url = "https://maven.nova-committee.cn/releases"
         }
-
+        maven {
+            name = "curse"
+            url = "https://www.cursemaven.com"
+            content {
+                includeGroup "curse.maven"
+            }
+        }
+        maven {
+            url = "https://maven.saps.dev/minecraft"
+            content {
+                includeGroup "dev.latvian.mods"
+                includeGroup "dev.ftb.mods"
+            }
+        }
     }
 
 

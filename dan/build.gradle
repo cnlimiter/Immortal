@@ -17,6 +17,9 @@ dependencies {
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
 
     modImplementation include("cn.evolvefield.mods:multiblocklib:${project.multiblocklib_version}")
+    modImplementation("dev.latvian.mods:kubejs-fabric:${project.kubejs_version}") {
+        exclude(group: "net.fabricmc.fabric-api")
+    }
     implementation project(":core")
 }
 
