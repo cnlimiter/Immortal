@@ -1,4 +1,4 @@
-package cn.evolvefield.mods.immortal.dan.common.recipe.slot;
+package cn.evolvefield.mods.immortal.dan.common.recipe.io;
 
 import cn.evolvefield.mods.immortal.dan.core.cao.FuType;
 

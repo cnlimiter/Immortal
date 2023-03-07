@@ -1,4 +1,4 @@
-package cn.evolvefield.mods.immortal.dan.common.container;
+package cn.evolvefield.mods.immortal.dan.common.menu.container;
 
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.Container;

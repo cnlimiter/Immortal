@@ -1,4 +1,4 @@
-package cn.evolvefield.mods.immortal.dan.common.recipe.slot;
+package cn.evolvefield.mods.immortal.dan.common.recipe.io;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;

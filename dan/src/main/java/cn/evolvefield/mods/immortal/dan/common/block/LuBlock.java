@@ -1,5 +1,6 @@
 package cn.evolvefield.mods.immortal.dan.common.block;
 
+import cn.evolvefield.mods.immortal.dan.common.menu.LuMenu;
 import cn.evolvefield.mods.multiblocklib.api.Multiblock;
 import cn.evolvefield.mods.multiblocklib.api.pattern.MatchResult;
 import net.minecraft.core.BlockPos;
@@ -24,7 +25,6 @@ import org.jetbrains.annotations.Nullable;
  * Description:
  */
 public class LuBlock extends Multiblock implements MenuProvider {
-    private final SimpleContainer inventory = new SimpleContainer(7);
 
     public LuBlock(Level world, MatchResult match) {
         super(world, match);
@@ -41,25 +41,13 @@ public class LuBlock extends Multiblock implements MenuProvider {
     }
 
     @Override
-    public CompoundTag writeTag() {
-        CompoundTag compound = super.writeTag();
-        compound.put("Inventory", inventory.createTag());
-        return compound;
-    }
-
-    @Override
-    public void readTag(CompoundTag tag) {
-        super.readTag(tag);
-        inventory.fromTag(tag.getList("Inventory", 10));
-    }
-    @Override
     public @NotNull Component getDisplayName() {
-        return null;
+        return Component.literal("DanLu");
     }
 
     @Nullable
     @Override
-    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
-        return null;
+    public AbstractContainerMenu createMenu(int i, @NotNull Inventory inventory, @NotNull Player player) {
+        return new LuMenu(i, inventory);
     }
 }

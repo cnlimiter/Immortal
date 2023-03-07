@@ -14,13 +14,14 @@ dependencies {
     }
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
 
     modImplementation include("cn.evolvefield.mods:multiblocklib:${project.multiblocklib_version}")
-    modImplementation("dev.latvian.mods:kubejs-fabric:${project.kubejs_version}") {
-        exclude(group: "net.fabricmc.fabric-api")
-    }
-    implementation project(":core")
+//    modImplementation("dev.latvian.mods:kubejs-fabric:${project.kubejs_version}") {
+//        exclude(group: "net.fabricmc.fabric-api")
+//    }
+    //print(project.getRootDir())
+    //modApi files(project.getRootDir().toString() + "/core/build/libs/Immortal-core-1.19.3.jar")
+    modImplementation project(":core")
 }
 
 loom {
@@ -49,6 +50,3 @@ processResources {
     }
 }
 
-tasks.register('prepareWorkspace') {
-
-}

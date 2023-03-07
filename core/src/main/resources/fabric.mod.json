@@ -36,7 +36,6 @@
     "fabricloader": ">=0.14.10",
     "fabric": "*",
     "minecraft": "1.19.3",
-    "dataattributes": ">=1.4.3",
     "java": ">=17"
   }
 }

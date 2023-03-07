@@ -1,12 +1,11 @@
 package cn.evolvefield.mods.immortal.dan.common.recipe;
 
-import cn.evolvefield.mods.immortal.dan.common.container.LuInContainer;
-import cn.evolvefield.mods.immortal.dan.common.recipe.slot.FuInput;
-import cn.evolvefield.mods.immortal.dan.common.recipe.slot.ItemOutput;
-import cn.evolvefield.mods.immortal.dan.common.recipe.slot.YinInput;
-import cn.evolvefield.mods.immortal.dan.common.recipe.slot.ZhuInput;
+import cn.evolvefield.mods.immortal.dan.common.menu.container.LuInContainer;
+import cn.evolvefield.mods.immortal.dan.common.recipe.io.FuInput;
+import cn.evolvefield.mods.immortal.dan.common.recipe.io.ItemOutput;
+import cn.evolvefield.mods.immortal.dan.common.recipe.io.YinInput;
+import cn.evolvefield.mods.immortal.dan.common.recipe.io.ZhuInput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;

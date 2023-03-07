@@ -1,9 +1,9 @@
 package cn.evolvefield.mods.immortal.dan.common.recipe;
 
-import cn.evolvefield.mods.immortal.dan.common.recipe.slot.FuInput;
-import cn.evolvefield.mods.immortal.dan.common.recipe.slot.ItemOutput;
-import cn.evolvefield.mods.immortal.dan.common.recipe.slot.YinInput;
-import cn.evolvefield.mods.immortal.dan.common.recipe.slot.ZhuInput;
+import cn.evolvefield.mods.immortal.dan.common.recipe.io.FuInput;
+import cn.evolvefield.mods.immortal.dan.common.recipe.io.ItemOutput;
+import cn.evolvefield.mods.immortal.dan.common.recipe.io.YinInput;
+import cn.evolvefield.mods.immortal.dan.common.recipe.io.ZhuInput;
 import cn.evolvefield.mods.immortal.dan.core.cao.FuType;
 import cn.evolvefield.mods.immortal.dan.core.cao.YinType;
 import cn.evolvefield.mods.immortal.dan.core.cao.ZhuType;

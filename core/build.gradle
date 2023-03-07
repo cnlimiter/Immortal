@@ -8,9 +8,7 @@ archivesBaseName = "${mod_name}-core-${minecraft_version}"
 
 
 repositories {
-    flatDir {
-        dirs "libs"
-    }
+
 }
 
 dependencies {
@@ -39,24 +37,6 @@ dependencies {
     }
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
 }
-
-loom {
-    runs {
-        client {
-            client()
-            setConfigName("Fabric Client")
-            ideConfigGenerated(true)
-            runDir("run")
-        }
-        server {
-            server()
-            setConfigName("Fabric Server")
-            ideConfigGenerated(true)
-            runDir("run")
-        }
-    }
-}
-
 
 processResources {
     inputs.property "version", project.version

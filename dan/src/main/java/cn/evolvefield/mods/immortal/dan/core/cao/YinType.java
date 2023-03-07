@@ -9,9 +9,10 @@ package cn.evolvefield.mods.immortal.dan.core.cao;
 public enum YinType {
 
 
-    PING(0, prefix("ping")),
-    HAN(1, prefix("han")),
-    RE(2, prefix("re"));
+    DEFAULT(0, prefix("default")),
+    PING(1, prefix("ping")),
+    HAN(2, prefix("han")),
+    RE(3, prefix("re"));
 
 
     public final int index;

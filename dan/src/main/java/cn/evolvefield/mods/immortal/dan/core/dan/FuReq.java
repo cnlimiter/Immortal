@@ -1,8 +1,8 @@
 package cn.evolvefield.mods.immortal.dan.core.dan;
 
 import cn.evolvefield.mods.immortal.dan.core.cao.FuType;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nullable;
 
 /**
  * Project: Immortal

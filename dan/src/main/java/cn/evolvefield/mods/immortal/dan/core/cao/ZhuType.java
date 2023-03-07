@@ -1,8 +1,5 @@
 package cn.evolvefield.mods.immortal.dan.core.cao;
 
-import cn.evolvefield.mods.immortal.core.common.cap.dao.DaoType;
-import net.minecraft.world.item.ItemStack;
-
 /**
  * Project: Immortal
  * Author: cnlimiter
@@ -11,16 +8,16 @@ import net.minecraft.world.item.ItemStack;
  */
 public enum ZhuType {
 
-
-    HUO_XUE(0, prefix("huo_xue")),
-    SHENG_XI(1, prefix("sheng_xi")),
-    JING_XUE(2, prefix("jing_xue")),
-    JV_YUAN(3, prefix("jv_yuan")),
-    LIAN_MO(4, prefix("lian_mo")),
-    QU_YAO(5, prefix("qu_yao")),
-    YOU_YAO(6, prefix("you_yao")),
-    YU_QI(7, prefix("yu_qi")),
-    ZHEN_QI(8, prefix("zhen_qi"));
+    DEFAULT(0, prefix("default")),
+    HUO_XUE(1, prefix("huo_xue")),
+    SHENG_XI(2, prefix("sheng_xi")),
+    JING_XUE(3, prefix("jing_xue")),
+    JV_YUAN(4, prefix("jv_yuan")),
+    LIAN_MO(5, prefix("lian_mo")),
+    QU_YAO(6, prefix("qu_yao")),
+    YOU_YAO(7, prefix("you_yao")),
+    YU_QI(8, prefix("yu_qi")),
+    ZHEN_QI(9, prefix("zhen_qi"));
 
 
     public final int index;
